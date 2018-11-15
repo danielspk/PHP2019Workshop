@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>PHP en el 2019</title>
+
+		<meta name="description" content="Presentación sobre PHP moderno">
+		<meta name="author" content="Daniel M. Spiridione">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>PHP en el 2019</h1>
+					<h3>¿en que año vives?</h3>
+				</section>
+
+				<section>
+					<h2>Presentación</h2>
+					<p><a href="https://github.com/danielspk/PHP2019Workshop">https://github.com/danielspk/PHP2019Workshop</a></p>
+					<p>&nbsp;</p>
+					<pre><code class="shell">php -S 0.0.0.0:3000</code></pre>
+					<p>WTF!</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>¿Quién soy?</h2>
+						<h3>Daniel M. Spiridione</h3>
+						<p>
+							<small>
+								<a href="http://daniel-spiridione.com.ar">Website</a> - 
+								<a href="https://github.com/danielspk">Open Source</a> - 
+								<a href="https://twitter.com/dmsdesarrollos">Twitter</a> - 
+								<a href="https://ar.linkedin.com/in/daniel-mart%C3%ADn-spiridione-46695528">Linkedin</a>
+							</small>
+						</p>
+					</section>
+					<section data-background="img/loveit.gif">Me encanta lo que hago!</section>
+				</section>
+
+				<section>
+					<h2>Temario:</h2>
+					<p><img src="img/flanders.gif" alt=""><br><small>.... lo intente pero serían al menos 8 slides!!!</small></p>
+				</section>
+
+				<section data-background="img/breakingbad.gif">Manos a la obra!</section>
+
+				<section>
+					<section>
+						<h1>Un poco del pasado ...</h1>
+					</section>
+					<section data-background="img/delorean.jpg"></section>
+				</section>
+
+				<section>
+					<h1>PHP</h1>
+					<h4>Un poco de Historia ... rápida</h4>
+					<ul>
+						<li class="fragment">Fue creado en 1995 <i>(hace más de 20 años)</i> por Rasmus Lerdorf</li>
+						<li class="fragment">Fue diseñado originalmente para servir aplicaciones web</li>
+						<li class="fragment">Es open source</li>
+						<li class="fragment">La compañia Zend <i>(hoy Rogue Wave)</i> está a cargo del motor de ejecución <i>(Zend Engine)</i></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>PHP</h1>
+					<h4>El Lenguaje ... vista rápida</h4>
+					<ul>
+						<li class="fragment">Escrito en C <i>(eso explica muchas cosas)</i></li>
+						<li class="fragment">Interpretado <i>(como python, perl, ruby, node)</i></li>
+						<li class="fragment">Tipado dinámico <i>(no maten al mensajero)</i></li>
+						<li class="fragment">Permite programar procedimentalmente como orientado a objetos</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Usos de PHP</h2>
+					<h4>Es un lenguaje de scripting de proposito general</h4>
+				</section>
+
+				<section>
+					<h2>Usos de PHP</h2>
+					<h4>Principalmente se utiliza para la Web (SAPI) y Command Line (CLI)</h4>
+				</section>
+
+				<section>
+					<h2>Otros usos de PHP</h2>
+					<ul>
+						<li><a href="http://gtk.php.net/">PHP-GTK</a></li>
+						<li><a href="https://wxphp.org/">wxPHP</a></li>
+						<li>Otros</li>
+					</ul>
+					<p>La realidad es que estos proyectos nunca tuvieron exito.</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>PHP</h1>
+						<h4>Mala fama</h4>
+						<ul>
+							<li class="fragment">Tiene un fundamento real <i>(a veces)</i></li>
+							<li class="fragment">Existe mucho desconocimiento</li>
+							<li class="fragment">Refiere a otras épocas - PHP 3/4/5</li>
+							<li class="fragment">Hay muchos extremistas / idealistas</li>
+						</ul>
+					</section>
+					<section data-background="img/taliban.gif"></section>
+				</section>
+
+				<section>
+					<h1>PHP - Mala Fama</h1>
+					<h2>Ejemplos</h2>
+				</section>
+
+				<section>
+					<h4>No consistente</h4>
+					<p><img src="img/phpstrings.png" alt=""><br><small>Funciones de Strings "str_" y "str", etc</small></p>
+				</section>
+
+				<section>
+					<h4>No consistente</h4>
+					<p><img src="img/phpparametersstripos.png" alt=""><br><small>String base como primer parámetro</small></p>
+				</section>
+
+				<section>
+					<h4>No consistente</h4>
+					<p><img src="img/phpparemetersstrreplace.png" alt=""><br><small>String base como tercer parámetro</small></p>
+				</section>
+
+				<section>
+					<h4>Retornos</h4>
+					<p><img src="img/phpreturnsubstr.png" alt=""></p>
+					<p><img src="img/phpreturnstrpos.png" alt=""><br><small>Algunos retornos pueden compararse con "==" pero otros con "===" para tener seguridad</small></p>
+				</section>
+
+				<section>
+					<h2>Conversiones:</h2>
+					<p>&nbsp;</p>
+					<pre><code class="php">var_dump(true + true); // int(2)</code></pre>
+				</section>
+
+				<section>
+					<h2>Toda la presentación podría ser sobre las incongruencias o puntos grises de PHP.</h2>
+					<h5>Si bien la verdad es que no es un lenguaje que brilla con su diseño, tiene una mala fama muy mal infundadaes en muchos aspectos.</h5>
+					<p>No olviden su origen - Lenguaje C</p>
+				</section>
+
+				<section>
+					<h3>Lectura para la casa:</h3>
+					<ul>
+						<li><a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/">Link a una de las tantas críticas a PHP - tal vez la más dura que leí.</a></li>
+						<li><a href="https://blog.ircmaxell.com/2012/04/php-sucks-but-i-like-it.html">Link a un respuesta sin extremismos.</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Para quien es esta charla</h2>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Esta charla es para vos si:</h2>
+						<p>&nbsp;</p>
+						<blockquote>seguis usando cualquier rama de la versión 4.x</blockquote>
+					</section>
+					<section data-background="img/zombie.gif"></section>
+				</section>
+
+				<section>
+					<h2>Esta charla es para vos si:</h2>
+					<p>&nbsp;</p>
+					<blockquote>seguis usando cualquier rama de la versión 5.x</blockquote>
+				</section>
+
+				<section>
+					<h2>Esta charla es para vos si:</h2>
+					<p>&nbsp;</p>
+					<blockquote>comenzas un nuevo proyecto sin usar la última versión de PHP</blockquote>
+					<blockquote>SI, DIJE LA ÚLTIMA!!!</blockquote>
+				</section>
+
+				<section>
+					<h2>Esta charla es para vos si:</h2>
+					<blockquote>si pones esta cara cuando ves algo como:</blockquote>
+					<pre><code class="php">declare(strict_types = 1);</code></pre>
+					<p><img src="img/what.gif" alt=""></p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Esta charla es para vos si:</h2>
+						<p>&nbsp;</p>
+						<blockquote>trabajas de otra cosa pero en el trabajo te dejaron venir igual.</blockquote>
+					</section>
+					<section data-background="img/pablo.gif"><br><small>bien ahi!</small></section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Un poco del futuro <i>(actual)</i> ...</h1>
+					</section>
+					<section data-background="img/rick-and-morty.jpg"></section>
+				</section>
+
+				<section>
+					<h1>Versiones de PHP</h1>
+				</section>
+
+				<section>
+					<h1>La versión actual es la 5.2</h1>
+				</section>
+
+				<section>
+					<h1>Mentira!!!</h1>
+					<h2>Esa versión es de hace 7 años</h2>
+					<p><img src="img/pulgoso.gif" alt=""></p>
+				</section>
+
+				<section>
+					<h3>Versiones de PHP</h3>
+					<p><img src="img/phpversions1.png" alt=""><br><small>(al 30/10/2018)</small></p>
+				</section>
+
+				<section>
+					<img src="img/phpversions2.png" alt="">
+					<img src="img/phpversions3.png" alt="">
+				</section>
+
+				<section>
+					<h3>PHP 7.3 se publicaría el 06/12/2018</h3>
+				</section>
+
+				<section>
+					<h2>¿PHP 6?</h2>
+					<p><img src="img/caruso.gif" alt=""><br><small>¿cómo explicar lo que es una bomba de humo?<br>Ya fue!, pongo un gif de Caruso</small></p>
+				</section>
+
+				<section>
+					<h2>¿Porque actualizar?</h2>
+					<p><img src="img/phpspeed.png" alt=""></p>
+				</section>
+
+				<section>
+					<h1>PHP en el 2019</h1>
+					<h5><strong>Nota:</strong> Muchas de las características que veremos son de la rama 5.x pero por esas razones de la "vida" son desconocidas o no utilizadas.</h5>
+				</section>
+
+				<section>
+					<h2>Por donde comenzar</h2>
+					<h6>(a actualizarnos)</h6>
+					<ul>
+						<li class="fragment"><a href="http://php.net/manual/en/appendices.php">Apéndices de PHP</a></li>
+						<li class="fragment"><a href="https://phptherightway.com/">PHP The Right Way</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>A - Métodos mágicos</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.oop5.magic.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo
+{
+    public function __toString() {
+        return "Soy una clase";
+    }
+}
+
+$clase = new Demo();
+echo $clase; // Soy una clase</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo
+{
+    public function __invoke($param) {
+        echo "Me han invocado con este parámetro: ".$param;
+    }
+}
+	
+$clase = new Demo();
+$clase(25); // Me han invocado con este parámetro: 25</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo
+{
+    private $propiedad = 5;
+	
+    public function __debugInfo() {
+        return [
+            'propiedad' => $this->propiedad * 5
+        ];
+    }
+}
+
+$clase = new Demo();
+var_dump($clase);
+// object(Demo)#1 (1) { ["propiedad"] => int(25) }</code></pre>
+				</section>
+
+				<section>
+					<h2>B - Closures - Funciones anónimas</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/functions.anonymous.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">$sumador = function($n1, $n2) {
+    return $n1 + $n2;
+};
+
+echo $sumador(10, 20); // 30</code></pre>
+				</section>
+
+				<section>
+					<h2>C - Clase Closure</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/class.closure.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo {
+    private $propiedad = 5;
+}
+
+$funcionAnonima = function() {
+    return $this->propiedad;
+};
+
+$closure = Closure::bind($funcionAnonima, new Demo, 'Demo');
+echo $closure(); // 5</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo
+{
+    public function saludar() {
+        echo "Hola closure";
+    }
+}
+
+$closure = Closure::fromCallable([new Demo(), 'saludar']);
+echo $closure(); // Hola closure</code></pre>
+				</section>
+
+				<section>
+					<h2>D - Namespaces</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.namespaces.rationale.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">namespace App\Controler;
+
+use \Exception;
+use App\Model\Usuario;
+
+class Demo
+{
+    public function ejemplo() {
+        $usr1 = new App\Model\Usuario(1);
+        $usr2 = new Usuario(2);
+    }
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>E - Traits</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.oop5.traits.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">trait DemoTrait
+{
+    public function saludar() {
+        echo "Hola desde Trait";
+    }
+}
+
+class Demo
+{
+    use DemoTrait;
+}
+
+$demo = new Demo();
+$demo->saludar(); // Hola desde Trait
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>F - Sintaxis acortada de arrays</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.types.array.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">$array1 = array(1, 2, 3);
+$array2 = [1, 2, 3];
+
+echo $array1[0]; // 1
+echo $array2[0]; // 1</code></pre>
+				</section>
+
+				<section>
+					<h2>G - Generators</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.generators.overview.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">function recorrerUnMillon() {
+    for ($i = 0; $i < 1000000; $i++) {
+        yield $i;
+    }						
+}
+
+foreach (recorrerUnMillon() as $numero) {
+    if ($numero == 10) {
+        break;
+    }
+
+    echo $numero;
+}
+// 0123456789</code></pre>
+				</section>
+
+				<section>
+					<h2>H - Finally en try-catch</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.exceptions.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">try {
+    // ...
+} catch (Exception $e) {
+    // ...
+} finally {
+    echo "Siempre me voy a ejecutar!";
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>I - Error y Throwable</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/class.error.php">Documentación Error</a></p>
+					<p><a href="http://php.net/manual/en/class.throwable.php">Documentación Throwable</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">try {
+    // ...
+} catch (DivisionByZeroError $e) {
+    // DivisionByZeroError extiende de ArithmeticError 
+    // que extiende de Error
+}
+
+try {
+    // ...
+} catch (Throwable $e) {
+    // Exception y Error implemetan la interface Throwable
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>J - Funciones variadicas</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/functions.arguments.php#functions.variable-arg-list">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">function sumar(...$numeros) {
+    $suma = 0;
+
+    foreach ($numeros as $numero) {
+        $suma += $numero;
+    }
+	
+    return $suma;
+}
+
+echo sumar(1, 2); // 3
+echo sumar(1, 2, 3, 4); // 10</code></pre>
+				</section>
+
+				<section>
+					<h2>K - Tipos escalares</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.types.intro.php">Documentación de Tipos</a></p>
+					<p><a href="http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration">Documentación de Argumentos</a></p>
+					<p><a href="http://php.net/manual/en/functions.returning-values.php">Documentación de Retornos</a></p>
+				</section>
+
+				<section>
+					<h6>Parámetros:</h6>
+					<pre><code class="php">function sumar(int $n1, int $n2) {
+    return $n1 + $n2;
+}
+
+function concatenar(string $a, string $b) {
+    return $a.$b;
+}
+
+echo sumar(5, 5); // 10
+echo sumar("5", "5"); // posible ERROR!
+
+echo concatenar("A", "B"); // AB
+echo concatenar(65, 66); // posible ERROR!</code></pre>
+				</section>
+
+				<section>
+					<h6>Parámetros:</h6>
+					<pre><code class="php">function hacerAlgo(ModeloUsuario $model) {
+    // ...
+}
+
+hacerAlgo(new ModeloUsuario()); // OK!
+hacerAlgo(25); // ERROR!</code></pre>
+				</section>
+
+				<section>
+					<h6>Retornos:</h6>
+					<pre><code class="php">function suma($n1, $n2): int {
+    return (int) ($n1 + $n2);
+}
+
+function crearUsuario(): UsuarioModel {
+    return new UsuarioModel();
+}</code></pre>
+				</section>
+					
+				<section>
+					<h6>Parámetros / Retornos nullables:</h6>
+					<pre><code class="php">function transformar(?string $parametro): ?string {
+    if (is_null($parametro)) {
+        return null;
+    }
+	
+    return strtoupper($parametro);
+}
+
+echo transformar(null); // null
+echo transformar("a"); // "A"</code></pre>
+				</section>
+
+				<section>
+					<h6>Retorno void:</h6>
+					<pre><code class="php">function guardar(): void {
+    // hacer algo...
+
+    // no hay ningún return
+}</code></pre>
+				</section>
+
+				<section>
+					<h5>Eso no es todo, en PHP 7.4 se permitiran tipos en propiedades de clases.</h5>
+					<p><img src="img/changemymind.jpg" alt=""></p>
+				</section>
+
+				<section>
+					<h2>L - Operador null coalescing</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/migration70.new-features.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">// esto
+$valor = isset($lista['valor']) ? $lista['valor'] : "desconocido";
+echo $valor;
+
+// es igual a esto
+$valor = $lista['valor'] ?? "desconocido";
+echo $valor;</code></pre>
+				</section>
+
+				<section>
+					<h2>M - Operador spaceship</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/migration70.new-features.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">echo 1 <=> 1; // 0
+echo 1 <=> 2; // -1
+echo 2 <=> 1; // 1
+
+echo 'a' <=> 'a'; // 0
+echo 'a' <=> 'b'; // -1
+echo 'b' <=> 'a'; // 1</code></pre>
+				</section>
+
+				<section>
+					<h2>N - Clases anónimas</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.oop5.anonymous.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">$demo = new class {
+    public function saludar(): string {
+        echo "Hola!";
+    }
+};
+
+echo $demo->saludar(); // Hola!</code></pre>
+				</section>
+
+				<section>
+					<h2>Ñ - Visibilidad en constantes</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.oop5.constants.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">class Demo
+{
+    public const NUMERO = "A2578-8";
+    private const SERIE = "125478-8965Z";
+}
+
+echo Demo::NUMERO; // A2578-8
+echo Demo::SERIE; // ERROR!</code></pre>
+				</section>
+
+				<section>
+					<h2>O - Multiple catch</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/language.exceptions.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">try {
+    // hacer algo ...
+} catch (ExcepcionA $e) {
+   // solucionar algo ...
+} catch (ExcepcionB $e) {
+   // solucionar lo mismo ...
+}
+
+// se puede resumir en
+try {
+    // hacer algo ...
+} catch (ExcepcionA | ExcepcionB $e) {
+   // solucionar algo ...
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>P - Modo estricto</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.strict">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">function sumar(int $num1, int $num2): int {
+    return $num1 + $num2;
+}
+
+echo sumar(25, 25); // 50
+echo sumar(25.5, 25.5); // 50 (parámetros convertidos a int)</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">declare(strict_types=1);
+
+function sumar(int $num1, int $num2): int {
+    return $num1 + $num2;
+}
+
+echo sumar(25, 25); // 50
+echo sumar(25.5, 25.5); // ERROR!</code></pre>
+				</section>
+
+				<section>
+					<h2>Q - Argon2</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/password.constants.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<pre><code class="php">$hash = password_hash('supercontraseña', PASSWORD_ARGON2I);
+
+echo $hash; // $argon2i$v=19$m=1024,t=2,p=2$SUpMRXJwMDJUZzY3dnVIRg$CQzzdiKhOHQ7Nsa9GslcNGY/CEHGRNx7NnZJPSz2mPw</code></pre>
+				</section>
+
+				<section>
+					<h2>R - SPL</h2>
+					<p>&nbsp;</p>
+					<p><a href="http://php.net/manual/en/book.spl.php">Documentación</a></p>
+				</section>
+
+				<section>
+					<h5>Permite trabajar e implementa:</h5>
+					<ul>
+						<li>Estructuras de datos</li>
+						<li>Iteradores</li>
+						<li>Interfaces</li>
+						<li>Excepciones</li>
+						<li>Archivos</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre><code class="php">$pila = new SplStack();
+$pila->push(25);
+$pila->push(20);
+$pila->rewind();
+
+while($pila->valid()) {
+    echo $pila->current().', ';
+    $pila->next();
+} // 20, 25,</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">$cola = new SplQueue();
+$cola->enqueue(25);
+$cola->enqueue(20);
+$cola->rewind();
+
+while($cola->valid()) {
+    echo $cola->current().', ';
+    $cola->next();
+} // 25, 20,</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="php">$info = new SplFileInfo('/tmp/logs/archivo.log');
+
+echo $info->getPath(); // /tmp/logs
+
+echo $info->getType(); // file
+
+echo $info->getExtension(); // log</code></pre>
+				</section>
+
+				<section>
+					<h1>Bonus</h1>
+				</section>
+
+				<section>
+					<h2>S - Estándares PSR</h2>
+				</section>
+
+				<section>
+					<h5>Definen interfaces y recomendaciones para la comunidad de PHP</h5>
+					<p><img src="img/psr.png" alt=""></p>
+				</section>
+
+				<section>
+					<h5>Respetar e implementar estos estándares permite y facilita la interoperabilidad de componentes</h5>
+					<p>&nbsp;</p>
+					<h6>¿Qué es un componente o paquete?</h6>
+				</section>
+
+				<section>
+					<h2>T - Paquetes</h2>
+				</section>
+
+				<section>
+					<h5>En una galaxia muy muy lejana ....</h5>
+					<p>&nbsp;</p>
+					<p><a href="https://pear.php.net/">PEAR</a></p>
+				</section>
+
+				<section>
+					<h5>Actualmente:</h5>
+					<p>&nbsp;</p>
+					<ul>
+						<li class="fragment"><a href="https://getcomposer.org/">Composer</a></li>
+						<li class="fragment"><a href="https://packagist.org/">Packagist</a></li>
+						<li class="fragment"><a href="https://packagist.com/">Packagist (privado)</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>U - Testing</h2>
+				</section>
+
+				<section>
+					<h5>Buenas alternativas:</h5>
+					<p>&nbsp;</p>
+					<ul>
+						<li class="fragment"><a href="https://phpunit.de/">PHPUnit</a></li>
+						<li class="fragment"><a href="https://codeception.com/">Codeception</a></li>
+						<li class="fragment"><a href="http://behat.org/en/latest/">Behat</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>V - Ides</h2>
+				</section>
+
+				<section>
+					<h5>Mi recomendación:</h5>
+					<p>&nbsp;</p>
+					<p class="fragment"><a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a></p>
+					<p>&nbsp;</p>
+					<p class="fragment">+ <a href="https://xdebug.org/">Xdebug</a></p>
+				</section>
+
+				<section>
+					<h2>W - Frameworks</h2>
+				</section>
+
+				<section>
+					<h5>Hay muchos y muy buenos:</h5>
+					<ul>
+						<li class="fragment"><a href="https://symfony.com/">Symfony</a></li>
+						<li class="fragment"><a href="https://laravel.com/">Laravel</a></li>
+						<li class="fragment"><a href="https://framework.zend.com/">Zend Framework / Expressive</a></li>
+						<li class="fragment"><a href="https://cakephp.org/">Cake PHP</a></li>
+						<li class="fragment">... muchos, pero muchos más!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h5>¿Cuál uso yo?</h5>
+					<p>&nbsp;</p>
+					<p class="fragment"><strong>Ninguno!</strong> - uso paquetes</p>
+					<p>&nbsp;</p>
+					<p class="fragment">Ver <a href="https://kevinsmith.io/modern-php-without-a-framework">Modern PHP Without a Framework</a></p>
+				</section>
+
+				<section>
+					<h2>X - Arquitecturas</h2>
+				</section>
+
+				<section>
+					<h5>Mi listado:</h5>
+					<p>(de aquellas que deberías al menos saber que existen)</p>
+					<ul>
+						<li class="fragment">SOAP</li>
+						<li class="fragment">RPC</li>
+						<li class="fragment">REST</li>
+						<li class="fragment">GraphQL</li>
+						<li class="fragment">gRPC</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Y - 3 Consejos personales</h2>
+				</section>
+
+				<section>
+					<ul>
+						<li>Nginx + FPM</li>
+						<li class="fragment">habilitar opcache</li>
+						<li class="fragment">usar colas de trabajos para tareas de larga duración</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Z - PHP Asincrónico?</h2>
+				</section>
+
+				<section>
+					<h5>Si!, Es posible:</h5>
+					<p>&nbsp;</p>
+					<ul>
+						<li class="fragment"><a href="https://reactphp.org/">ReactPHP</a></li>
+						<li class="fragment"><a href="https://amphp.org/">Amp</a></li>
+						<li class="fragment"><a href="https://www.swoole.co.uk/">Swoole</a> - (atentos a este)</li>
+					</ul>					
+				</section>
+				
+				<section>
+					<h2>Ups! - no hay más letras en el albecedario</h2>
+					<p>&nbsp;</p>
+					<h6>(Gracias a UNICODE sigamos con el alfabeto Chino)</h6>
+				</section>
+
+				<section>
+					<h2>阿 - Extensiones de PHP</h2>
+				</section>
+
+				<section>
+					<h5>Repositorio oficial:</h5>
+					<p>&nbsp;</p>
+					<p><a href="https://pecl.php.net/">PECL</a></p>
+				</section>
+
+				<section>
+					<h5>¿Extensiones propias?<br />Si!, Es posible:</h5>
+					<p>&nbsp;</p>
+					<ul>
+						<li class="fragment"><a href="http://www.php-cpp.com/">PHP-CPP</a></li>
+						<li class="fragment"><a href="https://zephir-lang.com/en">Zephir</a></li>
+						<li class="fragment">C puro - <a href="http://www.phpinternalsbook.com/">(libro)</a></li>
+					</ul>					
+				</section>
+
+				<section>
+					<h2>贝 - PSR15</h2>
+					<h6>¿No lo vimos antes?</h6>
+				</section>
+
+				<section>
+					<h5>Si, pero los middlewares merecen una segunda oportunidad</h5>
+					<p>&nbsp;</p>
+					<p><a href="https://github.com/middlewares/awesome-psr15-middlewares">Listado de recursos PSR-15</a></p>				
+				</section>
+
+				<section>
+					<h2>色 - Certificaciones</h2>
+				</section>
+
+				<section>
+					<h5>Esta es la única realmente seria y apreciada en la comunidad de PHP</h5>
+					<p>&nbsp;</p>
+					<p><a href="http://www.zend.com/en/services/certification/php-certification">Zend PHP Certification</a></p>
+					<p>&nbsp;</p>
+					<p class="fragment">(no confundir con certificaciones de frameworks)</p>
+				</section>
+
+				<section>
+					<h4>Atentos al Futuro</h4>
+					<p>&nbsp;</p>
+					<p>En octubre de 2018 parte del equipo del core del Zend Engine y Zend Framework anunciaron que dejan la Compañia Rogue Wave (quien compro Zend en 2015).</p>
+					<p class="fragment">Links: <a href="https://thephp.cc/news/2018/10/the-future-of-zend">1</a>, <a href="http://zsuraski.blogspot.com/2018/10/the-future-of-zend-engine-and-zend.html">2</a>, <a href="https://mwop.net/blog/2018-10-17-long-live-zf.html">3</a>.</p>
+				</section>
+
+				<section>
+					<h5>Mantente al día informado</h5>
+					<p>&nbsp;</p>
+					<ul>
+						<li class="fragment"><a href="http://www.planet-php.net/">Planet PHP</a></li>
+						<li class="fragment"><a href="https://beta.nomadphp.com/">Nomad PHP</a></li>
+						<li class="fragment"><a href="https://www.phparch.com/">php[architect]</a></li>
+						<li class="fragment"><a href="https://twitter.com">Twitter</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h6>ESO ES TODO AMIGOS</h6>
+					<p><img src="img/esoestodoamigos.jpg" alt=""></p>
+				</section>
+
+				<section>
+					<h1>¿Preguntas?</h1>
+					<p><img src="img/preguntas.gif" alt=""></p>
+				</section>
+
+				<section>
+					<section>
+						<h1>Hasta luego!</h1>
+					</section>
+					<section data-background="img/goodbye.gif"></section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
